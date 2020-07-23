@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"h2_embedded-173793ade10-52ca06275ea524bb": {
+			"provider": "generic",
+			"driver": "h2_embedded",
+			"name": "dio",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"database": "/home/igorferreira/dio",
+				"url": "jdbc:h2:/home/igorferreira/dio",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

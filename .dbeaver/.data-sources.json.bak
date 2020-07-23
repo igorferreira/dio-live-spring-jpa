@@ -1,0 +1,30 @@
+{
+	"folders": {},
+	"connections": {
+		"h2_embedded-1737937850c-4a885f9ad43dd653": {
+			"provider": "generic",
+			"driver": "h2_embedded",
+			"name": "dio.mv.db 2",
+			"save-password": true,
+			"show-system-objects": true,
+			"read-only": false,
+			"configuration": {
+				"database": "/home/igorferreira/dio.mv.db",
+				"url": "jdbc:h2:/home/igorferreira/dio.mv.db",
+				"type": "dev",
+				"auth-model": "native",
+				"handlers": {}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false
+		}
+	}
+}

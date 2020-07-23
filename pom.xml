@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.1.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.dio.live</groupId>
+	<artifactId>live-spring-jpa</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>live</name>
+	<description>Dio Live Spring JPA</description>
+
+	<properties>
+		<java.version>11</java.version>
+		<io.springfox.version>2.9.2</io.springfox.version>
+		<org.hibernate.version>5.4.18.Final</org.hibernate.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-configuration-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.junit.vintage</groupId>
+					<artifactId>junit-vintage-engine</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!-- hibernate -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-envers</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.1.5.Final</version>
+		</dependency>
+
+		<!-- springfox-swagger2 -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${io.springfox.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${io.springfox.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-bean-validators</artifactId>
+			<version>${io.springfox.version}</version>
+		</dependency>
+
+		<!-- libs -->
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		</dependency>
+
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+				    <profiles>
+	           			<profile>local</profile>
+	         		</profiles>
+					<arguments>
+						<argument>-Dserver.port=8081</argument>
+						<argument>-Dsulamerica.env=local</argument>
+						<argument>-Dsulamerica.logapproot.level=INFO</argument>
+						<argument>-Dsulamerica.logapp.rootdir=/opt/log-app</argument>
+						<argument>-Djava.security.egd=file:/dev/./urandom</argument>
+						<argument>-Djava.net.preferIPv4Stack=true</argument>
+						<argument>-Duser.timezone=America/Sao_Paulo</argument>
+						<argument>-Duser.language=pt</argument>
+						<argument>-Duser.country=BR</argument>
+						<argument>-Dfile.encoding=UTF-8</argument>
+					</arguments>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+							<goal>build-info</goal>
+						</goals>
+						<configuration>
+							<profiles>
+								<profile>local</profile>
+								<profile>dsv</profile>
+								<profile>hml</profile>
+								<profile>prd</profile>
+							</profiles>
+							<mainClass>com.dio.LiveApplication</mainClass>
+							<finalName>auto-parcerias</finalName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-envers</artifactId>
+				<version>5.4.18.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>2.8.6</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>
